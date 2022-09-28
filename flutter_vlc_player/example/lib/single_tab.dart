@@ -36,8 +36,7 @@ class _SingleTabState extends State<SingleTab> {
     //
     listVideos.add(VideoData(
       name: 'Network Video 1',
-      path:
-          'http://samples.mplayerhq.hu/MPEG-4/embedded_subs/1Video_2Audio_2SUBs_timed_text_streams_.mp4',
+      path: 'http://samples.mplayerhq.hu/MPEG-4/embedded_subs/1Video_2Audio_2SUBs_timed_text_streams_.mp4',
       type: VideoType.network,
     ));
     //
@@ -49,8 +48,23 @@ class _SingleTabState extends State<SingleTab> {
     //
     listVideos.add(VideoData(
       name: 'HLS Streaming Video 1',
+      path: 'http://demo.unified-streaming.com/video/tears-of-steel/tears-of-steel.ism.m3u8',
+      type: VideoType.network,
+    ));
+    listVideos.add(VideoData(
+      name: 'HLS Streaming Vimeo 2',
       path:
-          'http://demo.unified-streaming.com/video/tears-of-steel/tears-of-steel.ism/.m3u8',
+          'https://vod-progressive.akamaized.net/exp=1657481919~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F146%2F29%2F725733980%2F3365570545.mp4~hmac=d29e9222a501c8869c0ea75ab3bf70d187d832267038b3ffb78781ab7454730c/vimeo-prod-skyfire-std-us/01/146/29/725733980/3365570545.mp4',
+      type: VideoType.network,
+    ));
+    listVideos.add(VideoData(
+      name: 'Vimeo Raw',
+      path: 'https://vimeo.com/13083500',
+      type: VideoType.network,
+    ));
+    listVideos.add(VideoData(
+      name: 'YouTube Raw',
+      path: 'https://www.youtube.com/watch?v=Nhy0VWAMsFU',
       type: VideoType.network,
     ));
     //
@@ -144,8 +158,7 @@ class _SingleTabState extends State<SingleTab> {
               });
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(
-                      'The recorded video file has been added to the end of list.'),
+                  content: Text('The recorded video file has been added to the end of list.'),
                 ),
               );
             },
@@ -178,23 +191,20 @@ class _SingleTabState extends State<SingleTab> {
               selectedTileColor: Colors.black54,
               leading: Icon(
                 iconData,
-                color:
-                    selectedVideoIndex == index ? Colors.white : Colors.black,
+                color: selectedVideoIndex == index ? Colors.white : Colors.black,
               ),
               title: Text(
                 video.name,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color:
-                      selectedVideoIndex == index ? Colors.white : Colors.black,
+                  color: selectedVideoIndex == index ? Colors.white : Colors.black,
                 ),
               ),
               subtitle: Text(
                 video.path,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color:
-                      selectedVideoIndex == index ? Colors.white : Colors.black,
+                  color: selectedVideoIndex == index ? Colors.white : Colors.black,
                 ),
               ),
               onTap: () async {
